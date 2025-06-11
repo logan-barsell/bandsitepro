@@ -1,15 +1,19 @@
-# Node.js dependencies
-/node_modules
-/.pnp
-.pnp.js
+**/node_modules/
 
 # Next.js build output
-/.next
-/out
+**/.next/
 
-# Production dependencies
-/build
-/dist
+# Turborepo cache
+.turbo/
+**/.turbo/
+
+# Production builds
+/build/
+/dist/
+/out/
+
+# Lockfiles (if you choose)
+# pnpm-lock.yaml
 
 # Logs
 npm-debug.log*
@@ -20,13 +24,8 @@ yarn-error.log*
 .env.local
 .env.*.local
 
-# OS files
+# OS and editor files
 .DS_Store
 Thumbs.db
-
-# Editor directories and files
 .vscode/
 .idea/
-
-# pnpm lockfile
-pnpm-lock.yaml
