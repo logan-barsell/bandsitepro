@@ -1,0 +1,59 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Band {
+  id              String      @id @default(cuid())
+  name            String
+  slug            String      @unique
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  primaryColor    String?
+  secondaryColor  String?
+  backgroundColor String?
+  font            String?
+  users           User[]
+  shows           Show[]
+  releases        Release[]
+  mediaItems      MediaItem[]
+}
+
+model User {
+  id     String @id @default(cuid())
+  email  String @unique
+  bandId String
+  band   Band   @relation(fields: [bandId], references: [id])
+}
+
+model Show {
+  id         String   @id @default(cuid())
+  bandId     String
+  band       Band     @relation(fields: [bandId], references: [id])
+  date       DateTime
+  venue      String
+  location   String
+  ticketLink String?
+}
+
+model Release {
+  id         String @id @default(cuid())
+  bandId     String
+  band       Band   @relation(fields: [bandId], references: [id])
+  spotifyUri String
+  title      String
+  type       String
+}
+
+model MediaItem {
+  id      String  @id @default(cuid())
+  bandId  String
+  band    Band    @relation(fields: [bandId], references: [id])
+  type    String
+  url     String
+  caption String?
+}
