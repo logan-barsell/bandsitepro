@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
+  transpilePackages: [
+    '@bandsitepro/ui',
+    '@bandsitepro/trpc',
+    '@bandsitepro/prisma',
+  ],
 };
+
+module.exports = nextConfig;

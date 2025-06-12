@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: bandsite
+      POSTGRES_PASSWORD: bandsite_pw
+      POSTGRES_DB: bandsitepro_dev
+    ports:
+      - '5433:5432' # ← host port 5433 → container port 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
