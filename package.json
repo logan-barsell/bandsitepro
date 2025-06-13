@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "rebuild:ui": "cd packages/ui && pnpm build && cd ../.. && pnpm install",
+    "rebuild:all": "pnpm build && pnpm install"
   },
   "keywords": [],
   "author": "",
